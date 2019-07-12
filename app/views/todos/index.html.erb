@@ -1,24 +1,26 @@
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Things To Do</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @todos.each do |todo| %>
-      <tr>
-        <td><%= todo.description %></td>
-        <td><%= todo.completed? %></td>
-        <td><%= link_to "Show", todo %></td>
-        <td><%= link_to "Edit", editar_path(todo) %></td>
-        <td> <%= link_to "Delete", todo, method: :delete%></td>
-        <td> <%= link_to (todo.completed)? "Desmarcar" : "Marcar", complete_path(todo), class:'btn btn-danger' %></td>
-
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <p><%= link_to "Crear Ítem", todos_new_path, class:'btn btn-primary' %></p>
+
+  <div class="row">
+    <% @todos.each do |todo| %>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+
+          <h5 class="card-title">Actividad</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><%= todo.description %></li>
+              <li class="list-group-item"><%= todo.completed? %></li>
+              <div class"row>
+                <%= link_to "Show", todo, class: 'btn btn-warning' %>
+                <%= link_to "Edit", editar_path(todo), class: 'btn btn-secondary' %>
+                <%= link_to "Delete", todo, class:'btn btn-danger', method: :delete%>
+                <%= link_to (todo.completed)? "Desmarcar" : "  Marcar  ", complete_path(todo), class:'btn btn-info'%>
+
+              </div>
+        </div>
+      </div>
+      </div>
+        <% end %>
+  </div>
+  <br>
